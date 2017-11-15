@@ -21,12 +21,14 @@ let saban: IUser = <IUser>{
 };
 
 
+let was = 'soll das';
+
 // let copySaban = saban;
 // let copySaban = { ...saban };
 // copySaban.name = 'new name';
 
 let copySaban = {...saban, name: 'new Name', adress: {
-    country: 'de', zip: 46282
+    country: 'de', zip: 555565555
 } };
 
 
