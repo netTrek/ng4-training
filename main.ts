@@ -8,11 +8,41 @@ import { BMW } from './app/bmw';
 import { MyAbst } from './app/MyAbst';
 
 
+let list1: number[] = [1,2,3];
+let copy : number[] = [...list1];
+let list2: number[] = [4,5,6];
 
+let list3: number[] = [ ...list1, ...list2 ];
+let list4: number[] = [ ...list1, ...list2, 7, 8, 9 ];
+
+let saban: IUser = <IUser>{
+    name: 'saban',
+    age: 44
+};
+
+
+// let copySaban = saban;
+// let copySaban = { ...saban };
+// copySaban.name = 'new name';
+
+let copySaban = {...saban, name: 'new Name', adress: {
+    country: 'de', zip: 46282
+} };
+
+
+let {adress, age} = copySaban;
+
+console.log ( saban, copySaban );
+
+const firstname = 'saban';
+const birthday = '04.11.73';
+let testObj = { firstname: 'saban', birthday: '04.11.73' };
+let testObj2 = { firstname, birthday };
+
+/*
 let bmw: BMW = new BMW ('118d');
 console.log ( bmw.sayHello() );
 console.log ( bmw.tellMeYourType() );
-/*
 
 let test: MyAbst = new MyAbst ();
 */
