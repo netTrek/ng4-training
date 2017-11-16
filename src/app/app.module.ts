@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyModuleModule } from './my-module/my-module.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import { MyModuleModule } from './my-module/my-module.module';
   ],
   imports: [
     BrowserModule,
-    MyModuleModule,
+    UserModule,
     AppRoutingModule
   ],
   providers: [],
