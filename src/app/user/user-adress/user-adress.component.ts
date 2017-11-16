@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAdressComponent implements OnInit {
 
+  name = 'saban';
+
+
   constructor() { }
 
   ngOnInit() {
+    console.log ( 'UserAdressComponent initialized' );
   }
 
 }

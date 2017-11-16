@@ -10,6 +10,7 @@ export class UserHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log ( 'UserHeaderComp initialized' );
   }
 
 }
