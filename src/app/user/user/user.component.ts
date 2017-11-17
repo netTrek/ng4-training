@@ -1,31 +1,45 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { UserAdressComponent } from '../user-adress/user-adress.component';
+import { UserHeaderComponent } from '../user-header/user-header.component';
 
 @Component ( {
   selector   : 'gfn-user',
   templateUrl: './user.component.html',
   styleUrls  : [ './user.component.scss' ]
 } )
-export class UserComponent implements OnInit, AfterContentInit  {
+export class UserComponent implements OnInit, AfterViewInit {
 
+  @ViewChild( UserHeaderComponent )
+  userHeader: UserHeaderComponent;
 
-  @ContentChild ( UserAdressComponent )
+  @ViewChild( UserAdressComponent )
   userAdress: UserAdressComponent;
 
-  constructor ( $elemnt: ElementRef ) {
+  @ViewChild ('myContainer')
+  myContainer: ElementRef;
+
+  @ViewChildren ( UserAdressComponent )
+  userAdressList: QueryList<UserAdressComponent>;
+
+  username = 'Saban';
+  adress   = 'Germany';
+
+  constructor ( /*$elem: ElementRef*/ ) {
+    /* BAD .... NO .....
+    console.log ( 'elem', $elem.nativeElement );
+    $elem.nativeElement.getElementsByTagName( 'gfn-user-adress' );
+    */
   }
 
   ngOnInit () {
     console.log ( 'UserUserComponent initialized' );
   }
 
-  ngAfterContentInit (): void {
-    if ( !! this.userAdress ) {
-      console.log ( 'this follwoing user-adress comp was found',
-        this.userAdress );
-    } else {
-      console.log ( 'this user comp has no adress inf' );
-    }
+  ngAfterViewInit (): void {
+    // console.log ( this.userAdress, this.userHeader,
+    //   this.userAdressList.toArray() );
+    
+    console.log ( this.myContainer.nativeElement );
   }
 
 }
