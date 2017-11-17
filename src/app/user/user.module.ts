@@ -4,11 +4,13 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
 import { UserAdressComponent } from './user-adress/user-adress.component';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
+  providers: [UserService],
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent]
 })
