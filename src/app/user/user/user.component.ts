@@ -27,6 +27,8 @@ export class UserComponent implements OnInit, AfterViewInit {
   color = 'green';
   width = 50;
 
+  textAlignment = 'align-right';
+
   htmlDesc = `<h1>Saban</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt incidunt, <strong>modi</strong> nobis quam quasi reprehenderit. Alias at cumque dolore, eaque <script>alert('helll');</script> eveniet facilis ipsum laudantium nam necessitatibus placeat possimus praesentium reprehenderit?</p>`;
 
   catUrl = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb';
@@ -40,6 +42,10 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   chgAdress () {
     this.adress = 'Kosovo';
+  }
+
+  chgAligment ( newAlignClass: string ) {
+    this.textAlignment = newAlignClass;
   }
 
   getAddressWithTopLevel ( msg?: string ): string {
@@ -67,7 +73,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     // console.log ( this.userAdress, this.userHeader,
     //   this.userAdressList.toArray() );
 
-    console.log ( this.myContainer.nativeElement );
+    // console.log ( this.myContainer.nativeElement );
   }
 
 }

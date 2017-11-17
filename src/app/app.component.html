@@ -4,8 +4,18 @@
 </h1>
 
 <gfn-user-list>
-  <gfn-user></gfn-user>
+  <gfn-user
+    (click)="setSelected(0)"
+    [class.selected]="selectedInd===0"
+  ></gfn-user>
+  <gfn-user
+    (click)="setSelected(1)"
+    [class.selected]="selectedInd===1"
+  ></gfn-user>
 </gfn-user-list>
 
+<!--
+<gfn-ball></gfn-ball>
+-->
 
 <router-outlet></router-outlet>

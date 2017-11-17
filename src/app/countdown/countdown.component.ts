@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component ( {
   selector   : 'gfn-countdown',
   templateUrl: './countdown.component.html',
   styleUrls  : [ './countdown.component.scss' ]
 } )
-export class CountdownComponent implements OnInit {
-
+export class CountdownComponent implements OnInit, OnDestroy {
   percent = 100;
 
   private intervalId: any;
-  private totaltime   = 5;
+  private totaltime   = 3;
   private currentTime = 0;
 
   constructor () {
+  }
+
+  ngOnDestroy (): void {
+    this.dispose();
   }
 
   ngOnInit () {

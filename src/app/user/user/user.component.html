@@ -1,9 +1,15 @@
 <gfn-user-header>{{username}}</gfn-user-header>
+<gfn-user-adress></gfn-user-adress>
+<!--
 <hr>
 <gfn-countdown></gfn-countdown>
-<!--<div [innerHTML]="htmlDesc" [style.width.%]="width"></div>
+<div [class]="textAlignment" [innerHTML]="htmlDesc"></div>
+<button (click)="chgAligment('align-left')">left</button>
+<button (click)="textAlignment='align-center'">center</button>
+<button (click)="textAlignment='align-right'">right</button>
 <img [src]="catUrl" alt="cat" width="15%">
-<img [attr.src]="catUrl" alt="cat" width="15%">-->
+<img [attr.src]="catUrl" alt="cat" width="15%">
 <hr>
 <gfn-user-adress (click)="chgAdress()">{{getAddressWithTopLevel( 'hello' )}}</gfn-user-adress>
 <div #myContainer>Saban</div>
+-->
