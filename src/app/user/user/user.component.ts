@@ -9,13 +9,13 @@ import { UserHeaderComponent } from '../user-header/user-header.component';
 } )
 export class UserComponent implements OnInit, AfterViewInit {
 
-  @ViewChild( UserHeaderComponent )
+  @ViewChild ( UserHeaderComponent )
   userHeader: UserHeaderComponent;
 
-  @ViewChild( UserAdressComponent )
+  @ViewChild ( UserAdressComponent )
   userAdress: UserAdressComponent;
 
-  @ViewChild ('myContainer')
+  @ViewChild ( 'myContainer' )
   myContainer: ElementRef;
 
   @ViewChildren ( UserAdressComponent )
@@ -31,6 +31,27 @@ export class UserComponent implements OnInit, AfterViewInit {
     */
   }
 
+  chgAdress () {
+    this.adress = 'Kosovo';
+  }
+
+  getAddressWithTopLevel ( msg?: string ): string {
+
+    let out = '';
+
+    switch ( this.adress ) {
+      case 'Germany':
+        out = 'de';
+        break;
+      default:
+        out = 'ks';
+        break;
+    }
+
+    return `${msg} ${this.adress} ${out}`;
+
+  }
+
   ngOnInit () {
     console.log ( 'UserUserComponent initialized' );
   }
@@ -38,7 +59,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   ngAfterViewInit (): void {
     // console.log ( this.userAdress, this.userHeader,
     //   this.userAdressList.toArray() );
-    
+
     console.log ( this.myContainer.nativeElement );
   }
 
