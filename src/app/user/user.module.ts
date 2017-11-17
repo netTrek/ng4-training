@@ -4,10 +4,12 @@ import { UserComponent } from './user/user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
 import { UserAdressComponent } from './user-adress/user-adress.component';
+import { CountdownModule } from '../countdown/countdown.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    CountdownModule
   ],
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent]
