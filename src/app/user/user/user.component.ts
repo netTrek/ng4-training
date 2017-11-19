@@ -1,6 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
+  ViewChildren
+} from '@angular/core';
 import { UserAdressComponent } from '../user-adress/user-adress.component';
 import { UserHeaderComponent } from '../user-header/user-header.component';
+import { Address } from '../model/address';
 
 @Component ( {
   selector   : 'gfn-user',
@@ -21,8 +25,19 @@ export class UserComponent implements OnInit, AfterViewInit {
   @ViewChildren ( UserAdressComponent )
   userAdressList: QueryList<UserAdressComponent>;
 
-  username = 'Saban';
-  adress   = 'Germany';
+  @Input ()
+  ind = 0;
+
+  @Input ()
+  username        = 'Saban';
+  @Input ()
+  adress: Address = <Address>{
+    zip: 46282,
+    country: 'Germany'
+  };
+
+  @Output()
+  selected: EventEmitter<number> = new EventEmitter();
 
   color = 'green';
   width = 50;
@@ -40,19 +55,26 @@ export class UserComponent implements OnInit, AfterViewInit {
     */
   }
 
+  selectMe () {
+    this.selected.next( this.ind );
+  }
+
   chgAdress () {
-    this.adress = 'Kosovo';
+    this.adress = <Address>{
+      zip: 12345,
+      country: 'Kosovo'
+    };
   }
 
   chgAligment ( newAlignClass: string ) {
     this.textAlignment = newAlignClass;
   }
 
-  getAddressWithTopLevel ( msg?: string ): string {
+  getAddressWithTopLevel ( msg: string = ''): string {
 
     let out = '';
 
-    switch ( this.adress ) {
+    switch ( this.adress.country ) {
       case 'Germany':
         out = 'de';
         break;
@@ -61,7 +83,7 @@ export class UserComponent implements OnInit, AfterViewInit {
         break;
     }
 
-    return `${msg} ${this.adress} ${out}`;
+    return `${msg} ${this.adress.zip} ${out} ${this.adress.country}`;
 
   }
 

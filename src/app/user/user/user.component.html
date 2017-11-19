@@ -1,5 +1,5 @@
-<gfn-user-header>{{username}}</gfn-user-header>
-<gfn-user-adress></gfn-user-adress>
+<gfn-user-header (click)="selectMe()">{{username}}</gfn-user-header>
+<gfn-user-adress>{{getAddressWithTopLevel()}}</gfn-user-adress>
 <!--
 <hr>
 <gfn-countdown></gfn-countdown>

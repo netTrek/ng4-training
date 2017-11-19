@@ -5,11 +5,17 @@
 
 <gfn-user-list>
   <gfn-user
-    (click)="setSelected(0)"
+    [ind]="0"
+    username="peter"
+    (selected)="setSelected( $event )"
+    [adress]="add1"
     [class.selected]="selectedInd===0"
   ></gfn-user>
   <gfn-user
-    (click)="setSelected(1)"
+    [ind]="1"
+    username="heinz"
+    (selected)="setSelected( $event )"
+    [adress]="add2"
     [class.selected]="selectedInd===1"
   ></gfn-user>
 </gfn-user-list>
