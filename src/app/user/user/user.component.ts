@@ -15,15 +15,11 @@ import { User } from '../model/user';
 } )
 export class UserComponent implements OnInit, AfterViewInit, OnChanges {
 
-
-  @Input ()
-  ind = 0;
-
   @HostBinding ('class.selected')
   isSelected = true;
 
   @Input()
-  selectedInd: number;
+  selectedUsr: User;
 
   @ViewChild ( UserHeaderComponent )
   userHeader: UserHeaderComponent;
@@ -56,10 +52,10 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
   */
 
   @Output ()
-  selected: EventEmitter<number> = new EventEmitter ();
+  selectUsr: EventEmitter<User> = new EventEmitter ();
 
   @Output ()
-  delByInd: EventEmitter<number> = new EventEmitter ();
+  delByUsr: EventEmitter<User> = new EventEmitter ();
 
   constructor ( /*$elem: ElementRef*/ ) {
     /* BAD .... NO .....
@@ -99,19 +95,19 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
 
   @HostListener ( 'click' , ['$event'] )
   selectMe ( event: Event ) {
-    this.selected.next ( this.ind );
+    this.selectUsr.next ( this.user );
   }
 
   deleteMe () {
-    this.delByInd.next( this.ind );
+    this.delByUsr.next( this.user );
   }
 
   ngOnChanges ( changes: SimpleChanges ): void {
     // console.log ( changes );
-    if ( !! changes.selectedInd && !! changes.ind ) {
-      this.isSelected = changes.selectedInd.currentValue === changes.ind.currentValue;
-    } else if ( !! changes.selectedInd ) {
-      this.isSelected = changes.selectedInd.currentValue === this.ind;
+    if ( !! changes.selectedUsr && !! changes.ind ) {
+      this.isSelected = changes.selectedUsr.currentValue === changes.user.currentValue;
+    } else if ( !! changes.selectedUsr ) {
+      this.isSelected = changes.selectedUsr.currentValue === this.user;
     }
   }
 

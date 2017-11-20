@@ -1,11 +1,10 @@
 
 <gfn-user
   *ngFor="let user of list; index as i; even as e"
-  [ind]="i"
   [user]="user"
-  [selectedInd]="selectedInd"
-  (selected)="setSelected( $event )"
-  (delByInd)="delByInd ($event)"
+  [selectedUsr]="selectedUsr"
+  (selectUsr)="setSelected( $event )"
+  (delByUsr)="delByUsr ($event)"
   [class.even]="e"
   [class.odd]="!e"
 ></gfn-user>

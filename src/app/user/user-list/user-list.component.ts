@@ -13,8 +13,7 @@ export class UserListComponent implements OnInit, AfterContentInit {
   @Input ()
   list: Array<User>;
 
-  @Input ()
-  selectedInd = 0;
+  @Input () selectedUsr: User;
 
   @ContentChildren ( UserComponent )
   users: QueryList<UserComponent>;
@@ -22,22 +21,22 @@ export class UserListComponent implements OnInit, AfterContentInit {
   constructor () {
   }
 
-  setSelected ( id: number ) {
-    this.selectedInd = id;
+  setSelected ( usr: User ) {
+    this.selectedUsr = usr;
   }
 
-  delByInd ( id: number ) {
-    this.list.splice( id, 1 );
+  delByUsr ( usr: User ) {
+    this.list.splice ( this.list.indexOf( usr ), 1 );
   }
 
   addRandomUser () {
-    this.list.push( <User>{
-      name: `random ${this.list.length}`,
+    this.list.push ( <User>{
+      name  : `random ${this.list.length}`,
       adress: <Address> {
-        zip: 123 + this.list.length,
+        zip    : 123 + this.list.length,
         country: 'Germany'
       }
-    });
+    } );
   }
 
   ngOnInit () {
