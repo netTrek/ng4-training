@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { BallModule } from './ball/ball.module';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [

@@ -5,11 +5,13 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserHeaderComponent } from './user-header/user-header.component';
 import { UserAdressComponent } from './user-adress/user-adress.component';
 import { CountdownModule } from '../countdown/countdown.module';
+import { UtilsModule } from '../utils/utils.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    CountdownModule
+    CountdownModule,
+    UtilsModule
   ],
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent]

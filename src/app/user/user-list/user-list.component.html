@@ -1,5 +1,6 @@
 
 <gfn-user
+  gfnDoHover="green"
   *ngFor="let user of list; index as i; even as e"
   [user]="user"
   [selectedUsr]="selectedUsr"
@@ -8,7 +9,7 @@
   class="underline"
   [ngClass]="getClass( e )"
 ></gfn-user>
-<button (click)="addRandomUser()">add</button>
+<button (click)="addRandomUser()" gfnDoHover>add</button>
 
 <!-- diverend ways for class binding
   [ngClass]="{even: e, odd: !e}"
