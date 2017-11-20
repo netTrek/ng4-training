@@ -1,30 +1,46 @@
 import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { UserComponent } from '../user/user.component';
 import { User } from '../model/user';
+import { Address } from '../model/address';
 
-@Component({
-  selector: 'gfn-user-list',
+@Component ( {
+  selector   : 'gfn-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
-})
+  styleUrls  : [ './user-list.component.scss' ]
+} )
 export class UserListComponent implements OnInit, AfterContentInit {
 
-  @Input()
+  @Input ()
   list: Array<User>;
 
-  @Input()
+  @Input ()
   selectedInd = 0;
 
   @ContentChildren ( UserComponent )
   users: QueryList<UserComponent>;
 
-  constructor() { }
+  constructor () {
+  }
 
   setSelected ( id: number ) {
     this.selectedInd = id;
   }
 
-  ngOnInit() {
+  delByInd ( id: number ) {
+    this.list.splice( id, 1 );
+  }
+
+  addRandomUser () {
+    this.list.push( <User>{
+      name: `random ${this.list.length}`,
+      adress: <Address> {
+        zip: 123 + this.list.length,
+        country: 'Germany'
+      }
+    });
+  }
+
+  ngOnInit () {
     // console.log ( 'UserListComponent initialized' );
   }
 

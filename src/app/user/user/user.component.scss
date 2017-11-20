@@ -9,8 +9,13 @@
   .align-center {
     text-align: center;
   }
-
   &.selected {
     color: red;
+  }
+  &.even {
+    background-color: #dbdbdb;
+  }
+  &.odd {
+    background-color: #b8b8b8;
   }
 }

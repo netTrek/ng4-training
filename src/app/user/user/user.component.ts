@@ -58,6 +58,9 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
   @Output ()
   selected: EventEmitter<number> = new EventEmitter ();
 
+  @Output ()
+  delByInd: EventEmitter<number> = new EventEmitter ();
+
   constructor ( /*$elem: ElementRef*/ ) {
     /* BAD .... NO .....
     console.log ( 'elem', $elem.nativeElement );
@@ -97,6 +100,10 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
   @HostListener ( 'click' , ['$event'] )
   selectMe ( event: Event ) {
     this.selected.next ( this.ind );
+  }
+
+  deleteMe () {
+    this.delByInd.next( this.ind );
   }
 
   ngOnChanges ( changes: SimpleChanges ): void {
