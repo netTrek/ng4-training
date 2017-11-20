@@ -21,6 +21,13 @@ export class UserListComponent implements OnInit, AfterContentInit {
   constructor () {
   }
 
+  getClass ( isEven: boolean ): string {
+    if ( isEven ) {
+      return 'even';
+    }
+    return 'odd';
+  }
+
   setSelected ( usr: User ) {
     this.selectedUsr = usr;
   }

@@ -5,7 +5,13 @@
   [selectedUsr]="selectedUsr"
   (selectUsr)="setSelected( $event )"
   (delByUsr)="delByUsr ($event)"
-  [class.even]="e"
-  [class.odd]="!e"
+  class="underline"
+  [ngClass]="getClass( e )"
 ></gfn-user>
 <button (click)="addRandomUser()">add</button>
+
+<!-- diverend ways for class binding
+  [ngClass]="{even: e, odd: !e}"
+  [class.even]="e"
+  [class.odd]="!e"
+-->
