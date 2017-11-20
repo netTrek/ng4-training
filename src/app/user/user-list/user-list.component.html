@@ -1,12 +1,20 @@
 <gfn-user
   [ind]="0"
   [user]="list[0]"
+  [selectedInd]="selectedInd"
   (selected)="setSelected( $event )"
-  [class.selected]="selectedInd===0"
 ></gfn-user>
 <gfn-user
   [ind]="1"
   [user]="list[1]"
   (selected)="setSelected( $event )"
-  [class.selected]="selectedInd===1"
+  [selectedInd]="selectedInd"
 ></gfn-user>
+
+
+<!--
+
+  [class.selected]="selectedInd===0"
+  [class.selected]="selectedInd===1"
+
+-->

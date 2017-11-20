@@ -1,5 +1,5 @@
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild,
+  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, QueryList, ViewChild,
   ViewChildren
 } from '@angular/core';
 import { UserAdressComponent } from '../user-adress/user-adress.component';
@@ -13,6 +13,30 @@ import { User } from '../model/user';
   styleUrls  : [ './user.component.scss' ]
 } )
 export class UserComponent implements OnInit, AfterViewInit {
+
+  @Input ()
+  ind = 0;
+
+  @HostBinding ('class.selected')
+  isSelected = true;
+
+  get selectedInd (): number {
+    return this._selectedInd;
+  }
+
+  @Input()
+  set selectedInd ( value: number ) {
+    this._selectedInd = value;
+    console.log (  this._selectedInd , this.ind );
+    this.isSelected = this._selectedInd === this.ind;
+  }
+
+  private _selectedInd: number;
+
+  @HostListener ( 'click' , ['$event'] )
+  selectMe ( event: Event ) {
+    this.selected.next ( this.ind );
+  }
 
   @ViewChild ( UserHeaderComponent )
   userHeader: UserHeaderComponent;
@@ -35,11 +59,13 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   catUrl = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb';
 
-  @Input ()
-  ind = 0;
 
   @Input ()
   user: User;
+  /*
+  @Input()
+  selectedInd: number;
+  */
 
   @Output ()
   selected: EventEmitter<number> = new EventEmitter ();
@@ -51,9 +77,13 @@ export class UserComponent implements OnInit, AfterViewInit {
     */
   }
 
-  selectMe () {
-    this.selected.next ( this.ind );
+
+/*
+  @HostListener ( 'window:resize' , ['$event'] )
+  resize ( event: Event ) {
+    console.log ( event );
   }
+  */
 
   chgAligment ( newAlignClass: string ) {
     this.textAlignment = newAlignClass;
