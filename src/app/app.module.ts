@@ -17,8 +17,7 @@ import { AuthInterceptorService } from './auth-interceptor.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers   : [ AuthInterceptorService,
-                  {
+  providers   : [ {
                     provide : HTTP_INTERCEPTORS,
                     useClass: AuthInterceptorService,
                     multi   : true

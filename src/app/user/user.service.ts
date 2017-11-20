@@ -3,16 +3,32 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpParams } from '@angular/common/
 import { User } from './user';
 import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/filter';
+
+let _token: string;
+export function  getToken (): string {
+  return _token;
+}
 
 @Injectable ()
 export class UserService {
 
   crrUserlist: Observable<User[]>;
+  token$: BehaviorSubject<string> = new BehaviorSubject ( null );
 
   readonly endpoint = 'http://localhost:3000';
 
   constructor ( private $http: HttpClient ) {
-    this.crrUserlist = this.getList ();
+
+    this.token$
+      .filter ( val => val !== null )
+      .distinctUntilChanged ()
+      .subscribe ( next => {
+        _token = next;
+        this.crrUserlist = this.getList ();
+      } );
   }
 
   /**
