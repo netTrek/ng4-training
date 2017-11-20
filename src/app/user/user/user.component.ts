@@ -1,5 +1,6 @@
 import {
-  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, QueryList, ViewChild,
+  AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges,
+  ViewChild,
   ViewChildren
 } from '@angular/core';
 import { UserAdressComponent } from '../user-adress/user-adress.component';
@@ -12,7 +13,8 @@ import { User } from '../model/user';
   templateUrl: './user.component.html',
   styleUrls  : [ './user.component.scss' ]
 } )
-export class UserComponent implements OnInit, AfterViewInit {
+export class UserComponent implements OnInit, AfterViewInit, OnChanges {
+
 
   @Input ()
   ind = 0;
@@ -20,23 +22,8 @@ export class UserComponent implements OnInit, AfterViewInit {
   @HostBinding ('class.selected')
   isSelected = true;
 
-  get selectedInd (): number {
-    return this._selectedInd;
-  }
-
   @Input()
-  set selectedInd ( value: number ) {
-    this._selectedInd = value;
-    console.log (  this._selectedInd , this.ind );
-    this.isSelected = this._selectedInd === this.ind;
-  }
-
-  private _selectedInd: number;
-
-  @HostListener ( 'click' , ['$event'] )
-  selectMe ( event: Event ) {
-    this.selected.next ( this.ind );
-  }
+  selectedInd: number;
 
   @ViewChild ( UserHeaderComponent )
   userHeader: UserHeaderComponent;
@@ -55,6 +42,7 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   textAlignment = 'align-right';
 
+  // tslint:disable-next-line
   htmlDesc = `<h1>Saban</h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt incidunt, <strong>modi</strong> nobis quam quasi reprehenderit. Alias at cumque dolore, eaque <script>alert('helll');</script> eveniet facilis ipsum laudantium nam necessitatibus placeat possimus praesentium reprehenderit?</p>`;
 
   catUrl = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb';
@@ -106,14 +94,27 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   }
 
+  @HostListener ( 'click' , ['$event'] )
+  selectMe ( event: Event ) {
+    this.selected.next ( this.ind );
+  }
+
+  ngOnChanges ( changes: SimpleChanges ): void {
+    // console.log ( changes );
+    if ( !! changes.selectedInd && !! changes.ind ) {
+      this.isSelected = changes.selectedInd.currentValue === changes.ind.currentValue;
+    } else if ( !! changes.selectedInd ) {
+      this.isSelected = changes.selectedInd.currentValue === this.ind;
+    }
+  }
+
   ngOnInit () {
-    console.log ( 'UserUserComponent initialized' );
+    // console.log ( 'UserUserComponent initialized' );
   }
 
   ngAfterViewInit (): void {
     // console.log ( this.userAdress, this.userHeader,
     //   this.userAdressList.toArray() );
-
     // console.log ( this.myContainer.nativeElement );
   }
 

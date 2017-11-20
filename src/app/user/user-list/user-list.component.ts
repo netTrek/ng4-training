@@ -25,12 +25,12 @@ export class UserListComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    console.log ( 'UserListComponent initialized' );
+    // console.log ( 'UserListComponent initialized' );
   }
 
   ngAfterContentInit (): void {
-    console.log ( this.users );
-    console.log ( this.users.toArray() );
+    // console.log ( this.users );
+    // console.log ( this.users.toArray() );
   }
 
 }
