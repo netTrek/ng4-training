@@ -2,23 +2,8 @@
 <h1>
   Welcome to {{title}}!
 </h1>
-
-<gfn-user-list>
-  <gfn-user
-    [ind]="0"
-    username="peter"
-    (selected)="setSelected( $event )"
-    [adress]="add1"
-    [class.selected]="selectedInd===0"
-  ></gfn-user>
-  <gfn-user
-    [ind]="1"
-    username="heinz"
-    (selected)="setSelected( $event )"
-    [adress]="add2"
-    [class.selected]="selectedInd===1"
-  ></gfn-user>
-</gfn-user-list>
+<gfn-user-list [list]="users" [selectedInd]="1"
+></gfn-user-list>
 
 <!--
 <gfn-ball></gfn-ball>

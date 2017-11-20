@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Address } from './user/model/address';
+import { User } from './user/model/user';
 
 @Component ( {
   selector   : 'gfn-root',
@@ -8,21 +9,25 @@ import { Address } from './user/model/address';
 } )
 export class AppComponent {
 
-  title = 'gfn';
-  selectedInd = 0;
+  title       = 'gfn';
 
-  add1: Address = <Address>{
-    zip: 1234,
-    country: 'Germany',
-  };
-  add2: Address = <Address>{
-    zip: 700,
-    country: 'Bond',
-  };
+  users: Array<User> = [
+    <User>{
+      name  : 'peter',
+      adress: <Address>{
+        zip    : 1234,
+        country: 'Germany'
+      }
+    },
+    <User>{
+      name  : 'hans',
+      adress: <Address>{
+        zip    : 700,
+        country: 'Bond'
+      }
+    }
+  ];
 
-  setSelected ( id: number ) {
-    this.selectedInd = id;
-  }
 
   over ( event: Event ) {
     console.log ( 'over', event );

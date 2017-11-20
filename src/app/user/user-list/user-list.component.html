@@ -1,1 +1,12 @@
-<ng-content></ng-content>
+<gfn-user
+  [ind]="0"
+  [user]="list[0]"
+  (selected)="setSelected( $event )"
+  [class.selected]="selectedInd===0"
+></gfn-user>
+<gfn-user
+  [ind]="1"
+  [user]="list[1]"
+  (selected)="setSelected( $event )"
+  [class.selected]="selectedInd===1"
+></gfn-user>

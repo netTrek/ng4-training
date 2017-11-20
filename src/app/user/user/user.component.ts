@@ -5,6 +5,7 @@ import {
 import { UserAdressComponent } from '../user-adress/user-adress.component';
 import { UserHeaderComponent } from '../user-header/user-header.component';
 import { Address } from '../model/address';
+import { User } from '../model/user';
 
 @Component ( {
   selector   : 'gfn-user',
@@ -25,20 +26,6 @@ export class UserComponent implements OnInit, AfterViewInit {
   @ViewChildren ( UserAdressComponent )
   userAdressList: QueryList<UserAdressComponent>;
 
-  @Input ()
-  ind = 0;
-
-  @Input ()
-  username        = 'Saban';
-  @Input ()
-  adress: Address = <Address>{
-    zip: 46282,
-    country: 'Germany'
-  };
-
-  @Output()
-  selected: EventEmitter<number> = new EventEmitter();
-
   color = 'green';
   width = 50;
 
@@ -48,6 +35,15 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   catUrl = 'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?w=940&h=650&auto=compress&cs=tinysrgb';
 
+  @Input ()
+  ind = 0;
+
+  @Input ()
+  user: User;
+
+  @Output ()
+  selected: EventEmitter<number> = new EventEmitter ();
+
   constructor ( /*$elem: ElementRef*/ ) {
     /* BAD .... NO .....
     console.log ( 'elem', $elem.nativeElement );
@@ -56,25 +52,18 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   selectMe () {
-    this.selected.next( this.ind );
-  }
-
-  chgAdress () {
-    this.adress = <Address>{
-      zip: 12345,
-      country: 'Kosovo'
-    };
+    this.selected.next ( this.ind );
   }
 
   chgAligment ( newAlignClass: string ) {
     this.textAlignment = newAlignClass;
   }
 
-  getAddressWithTopLevel ( msg: string = ''): string {
+  getAddressWithTopLevel ( msg: string = '' ): string {
 
     let out = '';
 
-    switch ( this.adress.country ) {
+    switch ( this.user.adress.country ) {
       case 'Germany':
         out = 'de';
         break;
@@ -83,7 +72,7 @@ export class UserComponent implements OnInit, AfterViewInit {
         break;
     }
 
-    return `${msg} ${this.adress.zip} ${out} ${this.adress.country}`;
+    return `${msg} ${this.user.adress.zip} ${out} ${this.user.adress.country}`;
 
   }
 
