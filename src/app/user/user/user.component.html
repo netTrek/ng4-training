@@ -1,2 +1,13 @@
+<span *ngIf="isSelected; else elseBlock">*</span>
+<ng-template #elseBlock><span>-</span></ng-template>
 <gfn-user-header >{{user.name}}</gfn-user-header>
 <gfn-user-adress>{{getAddressWithTopLevel()}}</gfn-user-adress>
+
+
+<!--
+<ng-template [ngIf]="isSelected">
+  <span>*</span>
+  <gfn-user-header >{{user.name}}</gfn-user-header>
+  <gfn-user-adress>{{getAddressWithTopLevel()}}</gfn-user-adress>
+</ng-template>
+-->
