@@ -2,7 +2,7 @@
 <ng-template #elseBlock><span>-</span></ng-template>
 <gfn-user-header >{{user.name}}</gfn-user-header>
 <gfn-user-adress>{{getAddressWithTopLevel()}}</gfn-user-adress>
-<button (click)="deleteMe()">del</button>
+<button (click)="deleteMe()" gfnDoHover="blue">del</button>
 
 <!--
 <ng-template [ngIf]="isSelected">
