@@ -1,26 +1,32 @@
-import { Directive, ElementRef, HostBinding, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, HostBinding, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Directive({
   selector: '[gfnDoHover]'
 })
 export class DoHoverDirective implements OnChanges {
 
-
   @Input()
   @HostBinding ('style.color')
   gfnDoHover = 'red';
 
-  constructor( /*private elemRef: ElementRef */) {
-    /*
-    console.log ( 'hello dir', elemRef.nativeElement );
+  private _useColor: string;
 
-    elemRef.nativeElement.style.color = 'red';
-*/
+  constructor( ) {}
+
+  @HostListener ('mouseenter')
+  onEnter () {
+    this.gfnDoHover = this._useColor;
+  }
+  @HostListener ('mouseleave')
+  onLeave () {
+    this.gfnDoHover = null;
   }
 
   ngOnChanges ( changes: SimpleChanges ): void {
     if ( !!changes.gfnDoHover && changes.gfnDoHover.currentValue === '' ) {
-      this.gfnDoHover = 'red';
+      this._useColor = this.gfnDoHover = 'red';
+    } else {
+      this._useColor = this.gfnDoHover;
     }
   }
 
