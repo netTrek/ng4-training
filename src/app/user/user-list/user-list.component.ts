@@ -14,8 +14,6 @@ export class UserListComponent implements OnInit, AfterContentInit {
   @Input ()
   list: Array<User>;
 
-  @Input () selectedUsr: User;
-
   @ContentChildren ( UserComponent )
   users: QueryList<UserComponent>;
 
@@ -30,7 +28,7 @@ export class UserListComponent implements OnInit, AfterContentInit {
   }
 
   setSelected ( usr: User ) {
-    this.selectedUsr = usr;
+    this.$user.selectedUsr = usr;
   }
 
   ngOnInit () {

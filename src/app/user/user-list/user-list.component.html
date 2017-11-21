@@ -3,7 +3,7 @@
   gfnDoHover="green"
   *ngFor="let user of list; index as i; even as e"
   [user]="user"
-  [selectedUsr]="selectedUsr"
+  [selectedUsr]="$user.selectedUsr"
   (selectUsr)="setSelected( $event )"
   (delByUsr)="$user.delByUsr($event)"
   class="underline"

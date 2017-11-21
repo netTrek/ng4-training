@@ -4,6 +4,9 @@ import { Address } from './model/address';
 
 @Injectable()
 export class UserService {
+
+  selectedUsr: User;
+
   /**
    * copy and remove from AppComponent.ts
    * @type {[User , User]}
