@@ -33,10 +33,6 @@ export class UserListComponent implements OnInit, AfterContentInit {
     this.selectedUsr = usr;
   }
 
-  delByUsr ( usr: User ) {
-    this.list.splice ( this.list.indexOf( usr ), 1 );
-  }
-
   ngOnInit () {
     // console.log ( 'UserListComponent initialized' );
   }

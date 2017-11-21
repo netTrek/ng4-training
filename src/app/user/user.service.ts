@@ -37,4 +37,8 @@ export class UserService {
     } );
   }
 
+  delByUsr ( usr: User ) {
+    this.users.splice ( this.users.indexOf( usr ), 1 );
+  }
+
 }
