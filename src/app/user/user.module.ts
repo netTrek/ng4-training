@@ -6,6 +6,7 @@ import { UserHeaderComponent } from './user-header/user-header.component';
 import { UserAdressComponent } from './user-adress/user-adress.component';
 import { CountdownModule } from '../countdown/countdown.module';
 import { UtilsModule } from '../utils/utils.module';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { UtilsModule } from '../utils/utils.module';
     CountdownModule,
     UtilsModule
   ],
+  providers: [ UserService ], // provide Service to Application
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent]
 })

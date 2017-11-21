@@ -25,7 +25,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     BrowserModule,
     UserModule,
     BallModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UtilsModule // import UtilsModule to get NumOfUSersComponent
   ],
   providers   : [
     { provide: LOCALE_ID, useValue: 'sq' }

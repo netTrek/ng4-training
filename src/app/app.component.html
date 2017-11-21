@@ -2,7 +2,9 @@
 <h1>
   Welcome to {{title}}!
 </h1>
-<gfn-user-list [list]="users"></gfn-user-list>
+
+<gfn-num-of-users></gfn-num-of-users>
+<gfn-user-list [list]="$user.users"></gfn-user-list>
 
 <!--
 <gfn-ball></gfn-ball>

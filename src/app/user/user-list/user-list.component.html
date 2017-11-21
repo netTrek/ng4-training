@@ -9,7 +9,8 @@
   class="underline"
   [ngClass]="getClass( e )"
 ></gfn-user>
-<button (click)="addRandomUser()" gfnDoHover style="color: yellow">add</button>
+<!-- Use Service instate of internal Method -->
+<button (click)="$user.addRandomUser()" gfnDoHover style="color: yellow">add</button>
 
 <!-- diverend ways for class binding
   [ngClass]="{even: e, odd: !e}"

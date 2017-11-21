@@ -2,6 +2,7 @@ import { AfterContentInit, Component, ContentChildren, Input, OnInit, QueryList 
 import { UserComponent } from '../user/user.component';
 import { User } from '../model/user';
 import { Address } from '../model/address';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'gfn-user-list',
@@ -18,7 +19,7 @@ export class UserListComponent implements OnInit, AfterContentInit {
   @ContentChildren ( UserComponent )
   users: QueryList<UserComponent>;
 
-  constructor () {
+  constructor ( public $user: UserService ) {
   }
 
   getClass ( isEven: boolean ): string {
@@ -34,16 +35,6 @@ export class UserListComponent implements OnInit, AfterContentInit {
 
   delByUsr ( usr: User ) {
     this.list.splice ( this.list.indexOf( usr ), 1 );
-  }
-
-  addRandomUser () {
-    this.list.push ( <User>{
-      name  : `random ${this.list.length}`,
-      adress: <Address> {
-        zip    : 123 + this.list.length,
-        country: 'Germany'
-      }
-    } );
   }
 
   ngOnInit () {

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Address } from './user/model/address';
-import { User } from './user/model/user';
+import { UserService } from './user/user.service';
 
 @Component ( {
   selector   : 'gfn-root',
@@ -9,25 +8,9 @@ import { User } from './user/model/user';
 } )
 export class AppComponent {
 
+  constructor ( public $user: UserService ) {}
+
   title       = 'gfn';
-
-  users: Array<User> = [
-    <User>{
-      name  : 'peter',
-      adress: <Address>{
-        zip    : 1234,
-        country: 'Germany'
-      }
-    },
-    <User>{
-      name  : 'hans',
-      adress: <Address>{
-        zip    : 700,
-        country: 'Bond'
-      }
-    }
-  ];
-
 
   over ( event: Event ) {
     console.log ( 'over', event );
