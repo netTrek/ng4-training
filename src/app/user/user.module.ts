@@ -7,12 +7,14 @@ import { UserAdressComponent } from './user-adress/user-adress.component';
 import { CountdownModule } from '../countdown/countdown.module';
 import { UtilsModule } from '../utils/utils.module';
 import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     CountdownModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   providers: [ UserService ], // provide Service to Application
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent],

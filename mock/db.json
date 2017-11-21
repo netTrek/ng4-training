@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Peter",
+      "adress": {
+        "zip": 123,
+        "country": "Germany"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Hans",
+      "adress": {
+        "zip": 456,
+        "country": "Germany"
+      }
+    }
+  ]
+}
