@@ -15,6 +15,8 @@ import { User } from '../model/user';
 } )
 export class UserComponent implements OnInit, AfterViewInit, OnChanges {
 
+  date: Date = new Date ();
+
   @HostBinding ('class.selected')
   isSelected = true;
 
