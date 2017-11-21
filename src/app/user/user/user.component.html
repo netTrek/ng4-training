@@ -1,6 +1,7 @@
 <span *ngIf="isSelected; else elseBlock">*</span>
 <ng-template #elseBlock><span>-</span></ng-template>
-<gfn-user-header >{{user.name | myUppercase : 'saban' }}</gfn-user-header>
+<gfn-user-header >{{user.name}}</gfn-user-header>
+<!--<gfn-user-header >{{user.name | myUppercase : 'saban' }}</gfn-user-header>-->
 <gfn-user-adress>{{getAddressWithTopLevel()}}</gfn-user-adress>
 <!--
 
@@ -8,9 +9,12 @@
 <p>{{1234 | currency : 'EUR' : true  }}</p>
 <p>{{1234.34543534 | number }}</p>
 -->
+<!--
 <p>{{date | myDate }}</p>
 <p>{{date | myDate : 'short'}}</p>
 <p>{{date | myDate : 'full'}}</p>
+-->
+
 
 <button (click)="deleteMe()" gfnDoHover="blue">del</button>
 
