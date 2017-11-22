@@ -109,6 +109,12 @@ export class UserService {
     this.$http.delete ( `${this.endpoint}/${user.id}` )
         .subscribe ( () => {
           this.users.splice ( this.users.indexOf ( user ), 1 );
-        } );
+        }, err => {
+          if ( err instanceof HttpErrorResponse ) {
+            this.errorMsg$.next( `${err.statusText} ${err.message}` );
+          } else {
+            this.errorMsg$.next( err.toString () );
+          }
+        }  );
   }
 }
