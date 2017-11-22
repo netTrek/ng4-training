@@ -9,9 +9,9 @@
       }
     },
     {
-      "name": "random 1abcabc",
+      "name": "saban 007",
       "adress": {
-        "zip": 124,
+        "zip": 4711,
         "country": "Germany"
       },
       "id": 3
@@ -63,6 +63,14 @@
         "country": "Schweden"
       },
       "id": 9
+    },
+    {
+      "name": "I'm new",
+      "adress": {
+        "zip": 41173,
+        "country": "DE"
+      },
+      "id": 10
     }
   ]
 }

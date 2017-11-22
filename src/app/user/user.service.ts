@@ -101,23 +101,14 @@ export class UserService {
 
   // update
   update ( user: User ) {
+
     this.$http.put ( `${this.endpoint}/${user.id}`, user )
         .subscribe ( ( next ) => {
-          // console.log ( next );
-
           const userIndex           = this.users
                                         .findIndex ( x => x.id === user.id );
           if ( userIndex !== -1 ) {
             this.users[ userIndex ] = user;
           }
-
-          // for ( let i = 0; i < this.users.length; i++ ) {
-          //   const crrUsr: User = this.users[i];
-          //   if ( crrUsr.id === user.id ) {
-          //     this.users[i] = user;
-          //     break;
-          //   }
-          // }
         }, err => {
             if ( err instanceof HttpErrorResponse ) {
               this.errorMsg$.next( `${err.statusText} ${err.message}` );

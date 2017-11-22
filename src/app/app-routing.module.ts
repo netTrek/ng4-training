@@ -30,7 +30,14 @@ const routes: Routes = [
     resolve: {
       user: UserResolveService
     },
-    canActivate: [UserGuard, UserAdminGuard]
+    canActivate: [UserAdminGuard],
+    children: [
+      {
+        path: 'edit',
+        component: UserAddComponent,
+        canActivate: [UserAdminGuard]
+      }
+    ]
   },
   {
     path: 'add',
