@@ -55,7 +55,7 @@ export class UserService {
   }
 
   delByUsr ( usr: User ) {
-    this.delete( usr );
+    this.delete ( usr );
   }
 
   // create
@@ -70,6 +70,7 @@ export class UserService {
   getUserList (): Observable<User[]> {
     return this.$http.get ( this.endpoint );
   }
+
   getUserById ( id: number ): Observable<User> {
     return this.$http.get ( `${this.endpoint}/${id}` );
   }
@@ -77,15 +78,22 @@ export class UserService {
   // update
   update ( user: User ) {
     this.$http.put ( `${this.endpoint}/${user.id}`, user )
-        .subscribe ( (next) => {
+        .subscribe ( ( next ) => {
           // console.log ( next );
-          for ( let i = 0; i < this.users.length; i++ ) {
-            const crrUsr: User = this.users[i];
-            if ( crrUsr.id === user.id ) {
-              this.users[i] = user;
-              break;
-            }
+
+          const userIndex           = this.users
+                                        .findIndex ( x => x.id === user.id );
+          if ( userIndex !== -1 ) {
+            this.users[ userIndex ] = user;
           }
+
+          // for ( let i = 0; i < this.users.length; i++ ) {
+          //   const crrUsr: User = this.users[i];
+          //   if ( crrUsr.id === user.id ) {
+          //     this.users[i] = user;
+          //     break;
+          //   }
+          // }
         } );
   }
 
@@ -93,7 +101,7 @@ export class UserService {
   delete ( user: User ) {
     this.$http.delete ( `${this.endpoint}/${user.id}` )
         .subscribe ( () => {
-          this.users.splice( this.users.indexOf( user), 1);
+          this.users.splice ( this.users.indexOf ( user ), 1 );
         } );
   }
 }
