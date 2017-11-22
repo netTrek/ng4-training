@@ -55,22 +55,6 @@
         "country": "Germany"
       },
       "id": 8
-    },
-    {
-      "name": "gleich ist feierabend",
-      "adress": {
-        "zip": 1235,
-        "country": "Schweden"
-      },
-      "id": 9
-    },
-    {
-      "name": "I'm new",
-      "adress": {
-        "zip": 41173,
-        "country": "DE"
-      },
-      "id": 10
     }
   ]
 }

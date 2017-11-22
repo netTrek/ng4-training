@@ -18,7 +18,12 @@
       [(ngModel)]="user.adress.country"></td>
     </tr>
     <tr>
-      <td><input type="reset" value="reset"></td>
+      <td>
+        <input type="reset" value="reset" *ngIf="mode==='add'; else showDelete">
+        <ng-template #showDelete>
+          <button (click)="del()">delete</button>
+        </ng-template>
+      </td>
       <td><input type="submit" value="submit"></td>
     </tr>
   </table>

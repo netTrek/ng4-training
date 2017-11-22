@@ -45,6 +45,11 @@ export class UserAddComponent implements OnInit {
       });
   }
 
+  del () {
+    this.$user.delByUsr(this.user);
+    this.router.navigate( ['/user'] );
+  }
+
   create () {
     switch (this.mode) {
       case 'edit':
