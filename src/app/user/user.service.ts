@@ -38,6 +38,7 @@ export class UserService {
    ];*/
 
   constructor ( private $http: HttpClient ) {
+    this.role = window.localStorage.getItem( 'role' );
     this.getUserList ()
         .subscribe ( next => {
           this.users = next;
@@ -53,10 +54,15 @@ export class UserService {
     } else {
       this.errorMsg$.next( 'Inv invalid user' );
     }
+
+    if ( !!this.role ) {
+      window.localStorage.setItem( 'role', this.role );
+    }
   }
 
   logout () {
     this.role = undefined;
+    window.localStorage.removeItem( 'role' );
   }
 
   /**
