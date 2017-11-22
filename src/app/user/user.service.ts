@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { User } from './model/user';
 import { Address } from './model/address';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable ()
 export class UserService {
 
   readonly endpoint = 'http://localhost:3000/users';
-
   selectedUsr: User;
+  errorMsg$: BehaviorSubject<string> = new BehaviorSubject( null );
 
   /**
    * copy and remove from AppComponent.ts
@@ -77,7 +78,7 @@ export class UserService {
 
   // update
   update ( user: User ) {
-    this.$http.put ( `${this.endpoint}/${user.id}`, user )
+    this.$http.put ( `${this.endpoint}/ajsdgsahd${user.id}`, user )
         .subscribe ( ( next ) => {
           // console.log ( next );
 
@@ -94,6 +95,12 @@ export class UserService {
           //     break;
           //   }
           // }
+        }, err => {
+            if ( err instanceof HttpErrorResponse ) {
+              this.errorMsg$.next( `${err.statusText} ${err.message}` );
+            } else {
+              this.errorMsg$.next( err.toString () );
+            }
         } );
   }
 

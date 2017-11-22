@@ -16,6 +16,7 @@ import 'rxjs/add/operator/map';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { HandelErrorModule } from './handel-error/handel-error.module';
 
 @NgModule ( {
   declarations: [
@@ -26,6 +27,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     UserModule,
     BallModule,
     AppRoutingModule,
+    HandelErrorModule,
     UtilsModule // import UtilsModule to get NumOfUSersComponent
   ],
   providers   : [

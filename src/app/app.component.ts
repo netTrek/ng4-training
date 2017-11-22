@@ -8,9 +8,17 @@ import { UserService } from './user/user.service';
 } )
 export class AppComponent {
 
-  constructor ( public $user: UserService ) {}
+  constructor ( public $user: UserService ) {
 
-  title       = 'gfn';
+    $user.errorMsg$
+         .filter ( val => val !== null )
+         .subscribe ( next => {
+           alert ( next );
+         } );
+
+  }
+
+  title = 'gfn';
 
   over ( event: Event ) {
     console.log ( 'over', event );
