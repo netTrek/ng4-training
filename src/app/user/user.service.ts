@@ -62,7 +62,7 @@ export class UserService {
 
   logout () {
     this.role = undefined;
-    window.localStorage.removeItem( 'role' );
+        window.localStorage.removeItem( 'role' );
   }
 
   /**

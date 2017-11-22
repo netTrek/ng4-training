@@ -5,6 +5,8 @@ import { UserViewComponent } from './user/user-view/user-view.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserResolveService } from './user/user-resolve.service';
+import { UserGuard } from './user/user.guard';
+import { UserAdminGuard } from './user/user-admin.guard';
 
 const routes: Routes = [
   {
@@ -18,14 +20,16 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserViewComponent
+    component: UserViewComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'user/:id',
     component: UserDetailsComponent,
     resolve: {
       user: UserResolveService
-    }
+    },
+    canActivate: [UserGuard, UserAdminGuard]
   },
   {
     path: 'contact',
