@@ -6,6 +6,7 @@
   [selectedUsr]="$user.selectedUsr"
   (selectUsr)="setSelected( $event )"
   (delByUsr)="$user.delByUsr($event)"
+  (updateUsr)="$user.update($event)"
   class="underline"
   [ngClass]="getClass( e )"
 ></gfn-user>

@@ -15,7 +15,7 @@ export class UserService {
    * copy and remove from AppComponent.ts
    * @type {[User , User]}
    */
-  users: Array<User>;
+  users: Array<User> = [];
 
   /* = [
      <User>{
@@ -70,11 +70,29 @@ export class UserService {
   getUserList (): Observable<User[]> {
     return this.$http.get ( this.endpoint );
   }
+  getUserById ( id: number ): Observable<User> {
+    return this.$http.get ( `${this.endpoint}/${id}` );
+  }
+
+  // update
+  update ( user: User ) {
+    this.$http.put ( `${this.endpoint}/${user.id}`, user )
+        .subscribe ( (next) => {
+          // console.log ( next );
+          for ( let i = 0; i < this.users.length; i++ ) {
+            const crrUsr: User = this.users[i];
+            if ( crrUsr.id === user.id ) {
+              this.users[i] = user;
+              break;
+            }
+          }
+        } );
+  }
 
   // delete
   delete ( user: User ) {
     this.$http.delete ( `${this.endpoint}/${user.id}` )
-        .subscribe ( next => {
+        .subscribe ( () => {
           this.users.splice( this.users.indexOf( user), 1);
         } );
   }

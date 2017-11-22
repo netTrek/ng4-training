@@ -59,6 +59,9 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
   @Output ()
   delByUsr: EventEmitter<User> = new EventEmitter ();
 
+  @Output ()
+  updateUsr: EventEmitter<User> = new EventEmitter ();
+
   constructor ( /*$elem: ElementRef*/ ) {
     /* BAD .... NO .....
     console.log ( 'elem', $elem.nativeElement );
@@ -102,6 +105,10 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
 
   deleteMe () {
     this.delByUsr.next( this.user );
+  }
+
+  updateMe ( ) {
+    this.updateUsr.next( { ...this.user, name: this.user.name + 'abc' } );
   }
 
   ngOnChanges ( changes: SimpleChanges ): void {
