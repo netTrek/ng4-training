@@ -97,11 +97,13 @@ export class UserComponent implements OnInit, AfterViewInit, OnChanges {
     return `${msg} ${this.user.adress.zip} ${out} ${this.user.adress.country}`;
 
   }
+/*
 
   @HostListener ( 'click' , ['$event'] )
   selectMe ( event: Event ) {
     this.selectUsr.next ( this.user );
   }
+*/
 
   deleteMe () {
     this.delByUsr.next( this.user );
