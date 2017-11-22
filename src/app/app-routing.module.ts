@@ -7,6 +7,7 @@ import { UserDetailsComponent } from './user/user-details/user-details.component
 import { UserResolveService } from './user/user-resolve.service';
 import { UserGuard } from './user/user.guard';
 import { UserAdminGuard } from './user/user-admin.guard';
+import { UserAddComponent } from './user/user-add/user-add.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
       user: UserResolveService
     },
     canActivate: [UserGuard, UserAdminGuard]
+  },
+  {
+    path: 'add',
+    component: UserAddComponent,
+    canActivate: [UserAdminGuard]
   },
   {
     path: 'contact',

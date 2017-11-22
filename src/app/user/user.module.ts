@@ -14,17 +14,38 @@ import { RouterModule } from '@angular/router';
 import { UserResolveService } from './user-resolve.service';
 import { UserGuard } from './user.guard';
 import { UserAdminGuard } from './user-admin.guard';
+import { UserAddComponent } from './user-add/user-add.component';
+import { FormsModule } from '@angular/forms';
 
-@NgModule({
-  imports: [
+@NgModule ( {
+  imports     : [
     CommonModule,
     CountdownModule,
     UtilsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [ UserService, UserResolveService, UserGuard, UserAdminGuard ], // provide Service to Application
-  declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent, UserDetailsComponent],
-  exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent]
-})
-export class UserModule { }
+  providers   : [ UserService,
+                  UserResolveService,
+                  UserGuard,
+                  UserAdminGuard
+  ], // provide Service to Application
+  declarations: [ UserComponent,
+                  UserListComponent,
+                  UserHeaderComponent,
+                  UserAdressComponent,
+                  UserViewComponent,
+                  UserDetailsComponent,
+                  UserAddComponent
+  ],
+  exports     : [ UserComponent,
+                  UserListComponent,
+                  UserHeaderComponent,
+                  UserAdressComponent,
+                  UserViewComponent,
+                  UserAddComponent
+  ]
+} )
+export class UserModule {
+}

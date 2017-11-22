@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { FormModel } from './model/form-model';
-
+import 'rxjs/add/operator/do';
 @Injectable ()
 export class UserService {
   role: string;
@@ -75,7 +75,7 @@ export class UserService {
         zip    : 123 + this.users.length,
         country: 'Germany'
       }
-    } );
+    } ).subscribe();
   }
 
   delByUsr ( usr: User ) {
@@ -83,9 +83,9 @@ export class UserService {
   }
 
   // create
-  create ( user: User ) {
-    this.$http.post<User> ( this.endpoint, user )
-        .subscribe ( newUser => {
+  create ( user: User ): Observable<User> {
+    return this.$http.post<User> ( this.endpoint, user )
+        .do ( newUser => {
           this.users.push ( newUser );
         } );
   }
