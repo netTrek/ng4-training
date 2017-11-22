@@ -9,16 +9,19 @@ import { UtilsModule } from '../utils/utils.module';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserViewComponent } from './user-view/user-view.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     CountdownModule,
     UtilsModule,
+    RouterModule,
     HttpClientModule
   ],
   providers: [ UserService ], // provide Service to Application
-  declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent],
+  declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent, UserDetailsComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent]
 })
 export class UserModule { }
