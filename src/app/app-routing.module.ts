@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home/home.component';
 import { UserViewComponent } from './user/user-view/user-view.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { UserResolveService } from './user/user-resolve.service';
 
 const routes: Routes = [
   {
@@ -21,7 +22,10 @@ const routes: Routes = [
   },
   {
     path: 'user/:id',
-    component: UserDetailsComponent
+    component: UserDetailsComponent,
+    resolve: {
+      user: UserResolveService
+    }
   },
   {
     path: 'contact',

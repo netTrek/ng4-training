@@ -1,5 +1,7 @@
 <p>
   show infos for <strong>{{userId}}</strong>
 </p>
+<!--<p>{{user$ | async | json }}</p>-->
+<p>{{user | json}}</p>
 
 <a [routerLink]="['../', (userId+1) ]">next</a>

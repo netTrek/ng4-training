@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { RouterModule } from '@angular/router';
+import { UserResolveService } from './user-resolve.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     HttpClientModule
   ],
-  providers: [ UserService ], // provide Service to Application
+  providers: [ UserService, UserResolveService ], // provide Service to Application
   declarations: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent, UserDetailsComponent],
   exports: [UserComponent, UserListComponent, UserHeaderComponent, UserAdressComponent, UserViewComponent]
 })
