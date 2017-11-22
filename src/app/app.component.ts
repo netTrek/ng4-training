@@ -10,11 +10,11 @@ export class AppComponent {
 
   constructor ( public $user: UserService ) {
 
-    $user.errorMsg$
-         .filter ( val => val !== null )
-         .subscribe ( next => {
-           alert ( next );
-         } );
+    // $user.errorMsg$
+    //      .filter ( val => val !== null )
+    //      .subscribe ( next => {
+    //        alert ( next );
+    //      } );
 
   }
 

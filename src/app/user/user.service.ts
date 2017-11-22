@@ -78,7 +78,7 @@ export class UserService {
 
   // update
   update ( user: User ) {
-    this.$http.put ( `${this.endpoint}/ajsdgsahd${user.id}`, user )
+    this.$http.put ( `${this.endpoint}/${user.id}`, user )
         .subscribe ( ( next ) => {
           // console.log ( next );
 
