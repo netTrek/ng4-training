@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent
+    loadChildren: './contact/contact.module#ContactModule'
   },
   {
     path: '**',
