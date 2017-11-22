@@ -1,3 +1,23 @@
-<p>
-  home works!
-</p>
+<h3>login</h3>
+<form (submit)="login()" *ngIf="!$user.role; else showUserData">
+  <table>
+    <tr>
+      <td><label for="username">username</label></td>
+      <td><input type="text" name="username" id="username"
+                  [(ngModel)]="loginFormData.username"></td>
+    </tr>
+    <tr>
+      <td><label for="password">password</label></td>
+      <td><input type="password" name="password" id="password"
+                 [(ngModel)]="loginFormData.password"></td>
+    </tr>
+    <tr>
+      <td><input type="reset" value="rest"></td>
+      <td><input type="submit" value="submit"></td>
+    </tr>
+  </table>
+</form>
+<ng-template #showUserData>
+  Your are loagin in as a {{$user.role}}
+  <br><button (click)="$user.logout()">logout</button>
+</ng-template>

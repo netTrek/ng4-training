@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormModel } from '../../user/model/form-model';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'gfn-home',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  loginFormData: FormModel = <FormModel>{ username: '', password: ''};
+
+  constructor( public $user: UserService ) { }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.$user.login( this.loginFormData );
   }
 
 }

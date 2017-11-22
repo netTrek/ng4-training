@@ -4,9 +4,11 @@ import { Address } from './model/address';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { FormModel } from './model/form-model';
 
 @Injectable ()
 export class UserService {
+  role: string;
 
   readonly endpoint = 'http://localhost:3000/users';
   selectedUsr: User;
@@ -40,6 +42,21 @@ export class UserService {
         .subscribe ( next => {
           this.users = next;
         } );
+  }
+
+  login ( loginData: FormModel ) {
+
+    if ( loginData.username === 'netTrek' && loginData.password === 'saban') {
+      this.role = 'admin';
+    } else if ( loginData.username === 'hans' && loginData.password === 'peter') {
+      this.role = 'contributer';
+    } else {
+      this.errorMsg$.next( 'Inv invalid user' );
+    }
+  }
+
+  logout () {
+    this.role = undefined;
   }
 
   /**
