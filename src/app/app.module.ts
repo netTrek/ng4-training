@@ -17,6 +17,7 @@ import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HandelErrorModule } from './handel-error/handel-error.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule ( {
   declarations: [
@@ -26,6 +27,7 @@ import { HandelErrorModule } from './handel-error/handel-error.module';
     BrowserModule,
     UserModule,
     BallModule,
+    HomeModule,
     AppRoutingModule,
     HandelErrorModule,
     UtilsModule // import UtilsModule to get NumOfUSersComponent
