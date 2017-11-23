@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home/home.component';
 import { UserViewComponent } from './user/user-view/user-view.component';
-import { ContactComponent } from './contact/contact/contact.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserResolveService } from './user/user-resolve.service';
 import { UserGuard } from './user/user.guard';
@@ -46,7 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent
+    loadChildren: './contact/contact.module#ContactModule'
+    // component: ContactComponent
   },
   {
     path: '**',

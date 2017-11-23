@@ -3,17 +3,31 @@
   <h3>edit the user</h3>
 </ng-template>
 <!-- do not forget ngForm and ngModel to add Form - Controlls -->
-<form (submit)="create()" >
+<form (submit)="create()" #f="ngForm">
   <table>
     <tr>
       <td><label for="name">name</label></td>
-      <td><input type="text" name="name" id="name"
-      [(ngModel)]="user.name"></td>
+      <td><input type="text" name="name" id="name" required
+      [(ngModel)]="user.name"
+                 #u="ngModel" minlength="5" maxlength="10">
+        <div>
+          <span *ngIf="u?.errors?.required">This field is required</span>
+          <span *ngIf="u?.errors?.minlength">You have to type {{u?.errors?.minlength.requiredLength - u?.errors?.minlength.actualLength}} more characters</span>
+          </div>
+      </td>
     </tr>
     <tr>
       <td><label for="zip">zip</label></td>
       <td><input type="number" name="zip" id="zip"
-      [(ngModel)]="user.adress.zip"></td>
+      [(ngModel)]="user.adress.zip"
+                 min="1000" max="99999"
+                 pattern="\d{4}" required #p="ngModel"
+      >
+        <div>
+          <span *ngIf="p?.errors?.required">This field is required</span>
+          <span *ngIf="p?.errors?.pattern">Use no. between 1000-9999</span>
+        </div>
+      </td>
     </tr>
     <tr>
       <td><label for="country">country</label></td>
@@ -27,8 +41,14 @@
           <button (click)="del()">delete</button>
         </ng-template>
       </td>
-      <td><input type="submit" [attr.value]="mode"></td>
+      <td><input type="submit" [attr.value]="mode" [disabled]="f.invalid"></td>
     </tr>
   </table>
 </form>
+
+<!--
+-->
+<p>{{p.valid}}</p>
+<p>{{p.invalid}}</p>
+<p>{{p?.errors | json }}</p>
 

@@ -1,0 +1,13 @@
+:host {
+  input.ng-invalid + div {
+    display: block;
+    color: red;
+    font-size: smaller;
+  }
+  input.ng-valid + div {
+    display: none;
+  }
+  input.ng-untouched + div {
+    display: none;
+  }
+}

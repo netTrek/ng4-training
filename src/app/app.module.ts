@@ -6,19 +6,13 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { BallModule } from './ball/ball.module';
 import { UtilsModule } from './utils/utils.module';
-import { LowerCasePipe } from '@angular/common';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/observable/range';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HandelErrorModule } from './handel-error/handel-error.module';
 import { HomeModule } from './home/home.module';
-import { ContactModule } from './contact/contact.module';
 
 @NgModule ( {
   declarations: [
@@ -29,7 +23,6 @@ import { ContactModule } from './contact/contact.module';
     UserModule,
     BallModule,
     HomeModule,
-    ContactModule,
     AppRoutingModule,
     HandelErrorModule,
     UtilsModule // import UtilsModule to get NumOfUSersComponent
