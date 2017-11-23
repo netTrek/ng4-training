@@ -52,7 +52,7 @@ export class UserService {
     } else if ( loginData.username === 'hans' && loginData.password === 'peter') {
       this.role = 'contributer';
     } else {
-      this.errorMsg$.next( 'Inv invalid user' );
+      this.errorMsg$.next( 'Invalid user' );
     }
 
     if ( !!this.role ) {

@@ -1,11 +1,14 @@
-<h3>save a new  user</h3>
+<h3 *ngIf="mode==='add'; else showEditHeader">save a new  user</h3>
+<ng-template #showEditHeader>
+  <h3>edit the user</h3>
+</ng-template>
 <!-- do not forget ngForm and ngModel to add Form - Controlls -->
-<form (submit)="create()" #f="ngForm">
+<form (submit)="create()" >
   <table>
     <tr>
       <td><label for="name">name</label></td>
       <td><input type="text" name="name" id="name"
-      [(ngModel)]="user.name" #u="ngModel"></td>
+      [(ngModel)]="user.name"></td>
     </tr>
     <tr>
       <td><label for="zip">zip</label></td>
@@ -18,8 +21,13 @@
       [(ngModel)]="user.adress.country"></td>
     </tr>
     <tr>
-      <td><input type="reset" value="reset"></td>
-      <td><input type="submit" value="submit"></td>
+      <td>
+        <input type="reset" value="reset"*ngIf="mode==='add'; else showDeleteBtn">
+        <ng-template #showDeleteBtn>
+          <button (click)="del()">delete</button>
+        </ng-template>
+      </td>
+      <td><input type="submit" [attr.value]="mode"></td>
     </tr>
   </table>
 </form>

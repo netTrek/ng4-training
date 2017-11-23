@@ -28,9 +28,16 @@ const routes: Routes = [
     path: 'user/:id',
     component: UserDetailsComponent,
     resolve: {
-      user: UserResolveService
+      loadedUser: UserResolveService
     },
-    canActivate: [UserGuard, UserAdminGuard]
+    canActivate: [UserAdminGuard],
+    children: [
+      {
+        path: 'edit',
+        component: UserAddComponent,
+        canActivate: [UserAdminGuard]
+      }
+    ]
   },
   {
     path: 'add',

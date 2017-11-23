@@ -12,6 +12,9 @@ import { User } from '../model/user';
   styleUrls: ['./user-details.component.scss']
 })
 export class UserDetailsComponent implements OnInit, OnDestroy  {
+
+  static readonly USER = 'loadedUser';
+
   private subscription: Subscription;
   private subscription1: Subscription;
   private subscription2: Subscription;
@@ -32,7 +35,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy  {
       } );
 
     this.subscription2 = this.$route.data
-      .map( data => data['user'] )
+      .map( data => data[ UserDetailsComponent.USER ] )
       .subscribe( user => this.user = user );
 
 

@@ -7,62 +7,6 @@
         "zip": 456,
         "country": "Germany"
       }
-    },
-    {
-      "name": "random 1abcabc",
-      "adress": {
-        "zip": 124,
-        "country": "Germany"
-      },
-      "id": 3
-    },
-    {
-      "name": "random 2",
-      "adress": {
-        "zip": 125,
-        "country": "Germany"
-      },
-      "id": 4
-    },
-    {
-      "name": "random 3",
-      "adress": {
-        "zip": 126,
-        "country": "Germany"
-      },
-      "id": 5
-    },
-    {
-      "name": "saban",
-      "adress": {
-        "zip": 123,
-        "country": "germany"
-      },
-      "id": 6
-    },
-    {
-      "name": "test1234",
-      "adress": {
-        "zip": 12354,
-        "country": "Germany"
-      },
-      "id": 7
-    },
-    {
-      "name": "hello world",
-      "adress": {
-        "zip": 123,
-        "country": "Germany"
-      },
-      "id": 8
-    },
-    {
-      "name": "gleich ist feierabend",
-      "adress": {
-        "zip": 1235,
-        "country": "Schweden"
-      },
-      "id": 9
     }
   ]
 }
