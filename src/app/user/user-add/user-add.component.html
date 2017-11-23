@@ -1,11 +1,11 @@
 <h3>save a new  user</h3>
-
-<form (submit)="create()">
+<!-- do not forget ngForm and ngModel to add Form - Controlls -->
+<form (submit)="create()" #f="ngForm">
   <table>
     <tr>
       <td><label for="name">name</label></td>
       <td><input type="text" name="name" id="name"
-      [(ngModel)]="user.name"></td>
+      [(ngModel)]="user.name" #u="ngModel"></td>
     </tr>
     <tr>
       <td><label for="zip">zip</label></td>
